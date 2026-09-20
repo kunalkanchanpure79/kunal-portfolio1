@@ -1,1 +1,745 @@
- 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kunal | Developer Portfolio</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+html{
+    scroll-padding-top:80px;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050816;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* Animated Background */
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    filter:blur(120px);
+    z-index:-2;
+    animation:float 8s infinite alternate ease-in-out;
+}
+
+body::before{
+    background:#00e5ff;
+    top:-120px;
+    left:-100px;
+    opacity:.15;
+}
+
+body::after{
+    background:#8b5cf6;
+    right:-100px;
+    bottom:-100px;
+    opacity:.15;
+    animation-delay:2s;
+}
+
+@keyframes float{
+    from{transform:translate(0,0);}
+    to{transform:translate(60px,40px);}
+}
+
+/* Navbar */
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:70px;
+    padding:0 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(5,8,22,.75);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    z-index:1000;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#00e5ff;
+}
+
+nav ul{
+    display:flex;
+    gap:28px;
+    list-style:none;
+}
+
+nav ul a{
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+    transition:.3s;
+}
+
+nav ul a:hover{
+    color:#00e5ff;
+}
+
+.menu{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* Common */
+section{
+    padding:100px 8%;
+}
+
+.title{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:45px;
+}
+
+.title span{
+    color:#00e5ff;
+}
+
+/* Home */
+.home{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding-top:120px;
+}
+
+.home-content{
+    max-width:800px;
+}
+
+.profile{
+    width:130px;
+    height:130px;
+    margin:auto;
+    border-radius:50%;
+    border:3px solid #00e5ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:50px;
+    color:#00e5ff;
+    box-shadow:0 0 35px rgba(0,229,255,.35);
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.05);
+        box-shadow:0 0 60px rgba(0,229,255,.5);
+    }
+}
+
+.home h1{
+    margin-top:25px;
+    font-size:clamp(42px,8vw,75px);
+}
+
+.home h1 span{
+    color:#00e5ff;
+}
+
+.typing{
+    margin:15px 0;
+    font-size:clamp(20px,4vw,30px);
+    color:#aaa;
+}
+
+.home p{
+    max-width:650px;
+    margin:auto;
+    line-height:1.7;
+    color:#aaa;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:14px 30px;
+    background:#00e5ff;
+    color:#001014;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+    transition:.3s;
+    box-shadow:0 0 25px rgba(0,229,255,.3);
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 40px rgba(0,229,255,.6);
+}
+
+/* About */
+.about-box{
+    max-width:850px;
+    margin:auto;
+    padding:35px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:20px;
+    line-height:1.8;
+    color:#bbb;
+    backdrop-filter:blur(10px);
+}
+
+/* Skills */
+.skills{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:20px;
+    max-width:900px;
+    margin:auto;
+}
+
+.skill{
+    padding:25px 15px;
+    text-align:center;
+    border-radius:18px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+    transition:.4s;
+}
+
+.skill:hover{
+    transform:translateY(-10px) scale(1.03);
+    border-color:#00e5ff;
+    box-shadow:0 15px 35px rgba(0,229,255,.15);
+}
+
+.skill-icon{
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+.skill h3{
+    color:#00e5ff;
+}
+
+/* Projects */
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    padding:30px;
+    border-radius:20px;
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.03)
+    );
+    border:1px solid rgba(255,255,255,.1);
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-12px);
+    border-color:#8b5cf6;
+    box-shadow:0 15px 40px rgba(139,92,246,.18);
+}
+
+.card-icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    color:#00e5ff;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#aaa;
+    line-height:1.6;
+}
+
+.project-btn{
+    display:inline-block;
+    margin-top:20px;
+    color:#00e5ff;
+    text-decoration:none;
+}
+
+/* Education */
+.education{
+    max-width:800px;
+    margin:auto;
+}
+
+.edu{
+    padding:25px;
+    margin-bottom:20px;
+    background:rgba(255,255,255,.05);
+    border-left:3px solid #00e5ff;
+    border-radius:0 15px 15px 0;
+}
+
+.edu h3{
+    color:#00e5ff;
+    margin-bottom:8px;
+}
+
+.edu p{
+    color:#aaa;
+}
+
+/* Contact */
+.contact{
+    text-align:center;
+}
+
+.contact-box{
+    max-width:650px;
+    margin:auto;
+}
+
+.contact p{
+    color:#aaa;
+    margin:12px;
+}
+
+.social{
+    margin-top:25px;
+}
+
+.social a{
+    display:inline-block;
+    margin:7px;
+    padding:12px 20px;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:25px;
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.social a:hover{
+    background:#00e5ff;
+    color:#001014;
+    transform:translateY(-3px);
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:25px;
+    border-top:1px solid rgba(255,255,255,.08);
+    color:#777;
+}
+
+/* Scroll Animation */
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Mobile */
+@media(max-width:700px){
+
+    nav{
+        padding:0 6%;
+    }
+
+    .menu{
+        display:block;
+        color:#00e5ff;
+    }
+
+    nav ul{
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        display:none;
+        flex-direction:column;
+        text-align:center;
+        gap:0;
+        background:rgba(5,8,22,.97);
+    }
+
+    nav ul.active{
+        display:flex;
+    }
+
+    nav ul li{
+        padding:17px;
+        border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    section{
+        padding:80px 6%;
+    }
+
+    .title{
+        font-size:34px;
+    }
+
+    .home{
+        padding-top:100px;
+    }
+
+    .profile{
+        width:110px;
+        height:110px;
+        font-size:40px;
+    }
+
+    .about-box{
+        padding:25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+    <div class="logo">KUNAL.</div>
+
+    <div class="menu" onclick="toggleMenu()">☰</div>
+
+    <ul id="navLinks">
+        <li><a href="#home" onclick="closeMenu()">Home</a></li>
+        <li><a href="#about" onclick="closeMenu()">About</a></li>
+        <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+        <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+        <li><a href="#education" onclick="closeMenu()">Education</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    </ul>
+</nav>
+
+
+<!-- Home -->
+<section class="home" id="home">
+    <div class="home-content reveal">
+
+        <div class="profile">👨‍💻</div>
+
+        <h1>Hi, I'm <span>Kunal</span></h1>
+
+        <div class="typing">
+            <span id="typingText"></span>
+        </div>
+
+        <p>
+            Welcome to my personal portfolio.  
+            I am a passionate student and aspiring developer
+            interested in programming, technology and building useful projects.
+        </p>
+
+        <a href="#projects" class="btn">Explore My Work 🚀</a>
+
+    </div>
+</section>
+
+
+<!-- About -->
+<section id="about">
+    <h2 class="title reveal">About <span>Me</span></h2>
+
+    <div class="about-box reveal">
+        <p>
+            Hello! I'm Kunal, a passionate technology enthusiast and student.
+            I enjoy learning programming, developing projects and exploring
+            new technologies.
+        </p>
+
+        <br>
+
+        <p>
+            My goal is to continuously improve my technical skills and create
+            projects that solve real-world problems.
+        </p>
+    </div>
+</section>
+
+
+<!-- Skills -->
+<section id="skills">
+
+    <h2 class="title reveal">My <span>Skills</span></h2>
+
+    <div class="skills">
+
+        <div class="skill reveal">
+            <div class="skill-icon">💻</div>
+            <h3>C</h3>
+            <p>Programming</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="skill-icon">⚡</div>
+            <h3>C++</h3>
+            <p>Programming</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="skill-icon">☕</div>
+            <h3>Java</h3>
+            <p>OOP & Development</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="skill-icon">🐍</div>
+            <h3>Python</h3>
+            <p>Programming</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="skill-icon">🌐</div>
+            <h3>HTML</h3>
+            <p>Web Development</p>
+        </div>
+
+        <div class="skill reveal">
+            <div class="skill-icon">🎨</div>
+            <h3>CSS</h3>
+            <p>Web Design</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Projects -->
+<section id="projects">
+
+    <h2 class="title reveal">My <span>Projects</span></h2>
+
+    <div class="projects">
+
+        <div class="card reveal">
+            <div class="card-icon">🔐</div>
+            <h3>File Integrity Checker</h3>
+            <p>
+                A C++ based project that generates and checks file hashes
+                to help detect whether a file has been modified.
+            </p>
+
+            <a class="project-btn"
+               href="https://github.com/kunalkanchanpure79"
+               target="_blank">
+               View Project →
+            </a>
+        </div>
+
+
+        <div class="card reveal">
+            <div class="card-icon">🌐</div>
+            <h3>Personal Portfolio</h3>
+            <p>
+                A responsive animated portfolio website created using
+                HTML, CSS and JavaScript.
+            </p>
+
+            <a class="project-btn" href="#home">
+                View Website →
+            </a>
+        </div>
+
+
+        <div class="card reveal">
+            <div class="card-icon">💡</div>
+            <h3>College Projects</h3>
+            <p>
+                Academic programming and technology projects created
+                while learning software development.
+            </p>
+
+            <a class="project-btn" href="#contact">
+                Know More →
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Education -->
+<section id="education">
+
+    <h2 class="title reveal">My <span>Education</span></h2>
+
+    <div class="education">
+
+        <div class="edu reveal">
+            <h3>Engineering</h3>
+            <p>
+                Currently pursuing engineering studies and developing
+                programming and technical skills.
+            </p>
+        </div>
+
+        <div class="edu reveal">
+            <h3>Higher Secondary Education</h3>
+            <p>
+                Completed 12th standard with an interest in technology
+                and computer programming.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Contact -->
+<section id="contact" class="contact">
+
+    <h2 class="title reveal">Contact <span>Me</span></h2>
+
+    <div class="contact-box reveal">
+
+        <p>Interested in my work or want to connect?</p>
+
+        <div class="social">
+
+            <a href="https://github.com/kunalkanchanpure79"
+               target="_blank">
+               GitHub
+            </a>
+
+            <a href="https://www.linkedin.com/"
+               target="_blank">
+               LinkedIn
+            </a>
+
+            <a href="mailto:yourmail@example.com">
+               Email
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    © 2026 Kunal | Developer Portfolio
+</footer>
+
+
+<script>
+
+/* Typing Animation */
+
+const texts = [
+    "Aspiring Developer",
+    "C & C++ Programmer",
+    "Java Learner",
+    "Python Learner",
+    "Web Developer"
+];
+
+let textIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typeEffect(){
+
+    const element = document.getElementById("typingText");
+    const current = texts[textIndex];
+
+    if(!deleting){
+        element.textContent = current.substring(0,charIndex + 1);
+        charIndex++;
+
+        if(charIndex === current.length){
+            deleting = true;
+            setTimeout(typeEffect,1200);
+            return;
+        }
+
+    }else{
+
+        element.textContent = current.substring(0,charIndex - 1);
+        charIndex--;
+
+        if(charIndex === 0){
+            deleting = false;
+            textIndex++;
+
+            if(textIndex >= texts.length){
+                textIndex = 0;
+            }
+        }
+    }
+
+    setTimeout(typeEffect,deleting ? 60 : 100);
+}
+
+typeEffect();
+
+
+/* Mobile Menu */
+
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("active");
+}
+
+function closeMenu(){
+    document.getElementById("navLinks").classList.remove("active");
+}
+
+
+/* Scroll Reveal */
+
+function reveal(){
+
+    const elements = document.querySelectorAll(".reveal");
+
+    elements.forEach(element => {
+
+        const windowHeight = window.innerHeight;
+        const top = element.getBoundingClientRect().top;
+
+        if(top < windowHeight - 80){
+            element.classList.add("active");
+        }
+
+    });
+}
+
+window.addEventListener("scroll",reveal);
+
+reveal();
+
+</script>
+
+</body>
+</html>
